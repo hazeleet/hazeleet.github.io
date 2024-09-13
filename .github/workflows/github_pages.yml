@@ -1,18 +1,6 @@
 # Workflow for publishing to GitHub Pages.
 name: Deploy to GitHub Pages
 
-inputs:
-  output-path:
-    required: false
-    default: "output/"
-    description: "Where to output the generated files (`pelican`'s `--output` option)"
-    type: string
-  python:
-    required: false
-    default: "3.12"
-    description: "The version of Python to use, for example: '3.12' (to use the most recent version of Python 3.12, this is faster) or '3.12.1' (to use an exact version, slower)"
-    type: string
-
 on:
   push:
     branches: ["main"]
@@ -33,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python }}
+          python-version: 3.12
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -49,18 +37,17 @@ jobs:
           cmd += " --extra-settings"
           cmd += """ SITEURL='"${{ steps.pages.outputs.base_url }}"'"""
           cmd += """ FEED_DOMAIN='"${{ steps.pages.outputs.base_url }}"'"""
-          cmd += " --output ${{ inputs.output-path }}"
 
           subprocess.run(cmd, shell=True, check=True)
       - name: Fix permissions
         run: |
-          chmod -c -R +rX "${{ inputs.output-path }}" | while read line; do
+          chmod -c -R +rX "$output/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ inputs.output-path }}
+          path: "output/"
   deploy:
     environment:
       name: github-pages
