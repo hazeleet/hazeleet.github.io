@@ -1,6 +1,9 @@
 # Workflow for publishing to GitHub Pages.
 name: Deploy to GitHub Pages
 on:
+	push:
+		branches: ["main"]
+	workflow_dispatch:
   workflow_call:
     inputs:
       settings:
@@ -45,6 +48,8 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+with:
+	settings: "publishconf.py"
 jobs:
   build:
     runs-on: ubuntu-latest
