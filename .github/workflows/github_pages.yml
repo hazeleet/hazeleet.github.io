@@ -1,9 +1,9 @@
 # Workflow for publishing to GitHub Pages.
 name: Deploy to GitHub Pages
 on:
-	push:
-		branches: ["main"]
-	workflow_dispatch:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
   workflow_call:
     inputs:
       settings:
