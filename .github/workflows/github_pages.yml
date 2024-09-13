@@ -49,7 +49,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 with:
-	settings: "publishconf.py"
+  settings: "publishconf.py"
 jobs:
   build:
     runs-on: ubuntu-latest
