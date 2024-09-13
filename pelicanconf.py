@@ -1,6 +1,6 @@
 AUTHOR = 'hazeleet'
 SITENAME = 'Blog'
-SITEURL = ""
+SITEURL = "https://www.hazeleet.xyz"
 
 PATH = "content"
 
