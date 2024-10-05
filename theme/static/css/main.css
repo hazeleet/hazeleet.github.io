@@ -12,7 +12,8 @@
 @import url("reset.css");
 @import url("pygment.css");
 @import url("typogrify.css");
-@import url("../fonts/font.css");
+@import url(https://cdn.jsdelivr.net/npm/charter-webfont@4/charter.min.css);
+@import url(https://cdn.jsdelivr.net/npm/firacode@6/distr/fira_code.min.css);
 
 /***** Global *****/
 /* Body */
@@ -20,12 +21,24 @@ body {
     background: #F5F4EF;
     color: #000305;
     font-size: 18px; /* Base font size: 14px */
-    font-family: 'Charter';
+    font-family: 'Charter', sans-serif;
     line-height: 1.429;
     margin: 0;
     padding: 0;
     text-align: left;
 }
+
+.highlight {
+  font-family: 'Fira Code', monospace;
+  background-color: rgb(238, 238, 238);
+  padding: 10px;
+  margin: 10px;
+  overflow: auto;
+}
+@supports (font-variation-settings: normal) {
+  .highlight { font-family: 'Fira Code VF', monospace; }
+}
+
 
 /* Headings */
 h1 {font-size: 2em }
@@ -102,8 +115,6 @@ li { margin-top: 0.5em;
 dl {margin: 0 0 1.5em 0;}
 dt {font-weight: bold;}
 dd {margin-left: 1.5em;}
-
-pre{background-color:  rgb(238, 238, 238); padding: 10px; margin: 10px; overflow: auto;}
 
 /* Quotes */
 blockquote {
